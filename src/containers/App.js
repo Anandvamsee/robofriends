@@ -4,6 +4,7 @@ import Cardlist from '../components/cardlist';
 import SearchBox from '../components/SearchBox'
 import './app.css';
 import Scroll from '../components/Scroll';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 
 
@@ -33,20 +34,23 @@ componentDidMount(){
         const filteredRobots = robots.filter((robot)=>{
             return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         })
-    if (!robots.length){  // this expression by default evaluates to if the robots array has some length. Hence ! means if the robots awway has no length, return loading
+    if (!robots.length){  // this expression by default evaluates to if the robots array has some length. Hence ! means if the robots arraay has no length, return loading
         return (
             <h1>Loading...</h1>
         )
     }
     else {
     return (
-        
         <div className = 'tc'>  
             <h1 className='f1'>RoboFriends</h1> 
             <SearchBox  searchChange = {this.onSearchChange}/> 
+            
             <Scroll>
-                <Cardlist robots = {filteredRobots}/>
+                <ErrorBoundary> 
+                    <Cardlist robots = {filteredRobots}/>
+                </ErrorBoundary>
             </Scroll>
+            
         </div>
         );
     }

@@ -3,6 +3,10 @@ import Card from './card';
 
 
 const Cardlist = ({robots}) => {  // Destructuring is very IMP!
+    /* Code to check if the ErrorBoundary component is working! 
+    if (true){
+        throw new Error('Nooooooo!')
+    }*/ 
     return (
         <div>
         { // specifies that the code below has to be evaluated as a JS expression!
